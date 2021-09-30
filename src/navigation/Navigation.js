@@ -6,15 +6,32 @@ import Home from '../screens/Home';
 import About from '../screens/About';
 import Contact from '../screens/Contact';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
 
 const Tab=createBottomTabNavigator();
 export default function Navigation(){
 return(
-<Tab.Navigator>
- <Tab.Screen name="home" component={Home} options={{title:'Home'}}/>
- <Tab.Screen name="contact" component={Contact} options={{title:'Contact'}}/>
- <Tab.Screen name="about" component={About} options={{title:'About'}}/>
- </Tab.Navigator>
+<Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: '#40afbf',
+        tabBarActiveBackgroundColor: "#cccccc",
+        tabBarInactiveTintColor: "#FFF",
+        tabBarInactiveBackgroundColor: "#697689"
+      }}
+>
+ <Tab.Screen name="Dogs" component={Home}    options={{
+          tabBarLabel: 'Dogs',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="dog" color={color} size={size} />
+          ),
+        }}/>
+ <Tab.Screen name="Cats" component={Contact} options={{
+          tabBarLabel: 'Cats',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="cat" color={color} size={size} />
+          ),
+        }}/>
+  </Tab.Navigator>
 );
 }
